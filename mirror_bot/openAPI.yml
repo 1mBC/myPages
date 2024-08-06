@@ -1,0 +1,382 @@
+openapi: 3.0.0
+info:
+  title: MirrorBot API
+  description: API for interacting with a Smart Contract on Ethereum
+  version: 1.0.0
+servers:
+  - url: https://mainnet.infura.io/v3/05692456d8d64f42a32a3e247a8b362c
+paths:
+  /_adminAdress:
+    get:
+      summary: Get Admin Address
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  address:
+                    type: string
+                    example: "0x..."
+  /_getAdminFee:
+    get:
+      summary: Get Admin Fee
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fee:
+                    type: string
+                    example: "1000"
+  /_getInfluencerValue:
+    get:
+      summary: Get Influencer Value
+      parameters:
+        - in: query
+          name: _influencerAddress
+          schema:
+            type: string
+          required: true
+          description: Influencer address
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    example: "1000"
+  /adminAddress:
+    get:
+      summary: Get Admin Address
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  address:
+                    type: string
+                    example: "0x..."
+  /buyV3:
+    post:
+      summary: Execute buyV3 function
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountOutMin:
+                  type: string
+                  example: "1000"
+                tokenOut:
+                  type: string
+                  example: "0x..."
+                fee:
+                  type: string
+                  example: "3000"
+                influencerAddress:
+                  type: string
+                  example: "0x..."
+                influencerFeePercentage:
+                  type: string
+                  example: "10"
+                masterInfluencerAddress:
+                  type: string
+                  example: "0x..."
+                masterInfluencerFeePercentage:
+                  type: string
+                  example: "10"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactionHash:
+                    type: string
+                    example: "0xTransactionHash"
+  /buyv2:
+    post:
+      summary: Execute buyv2 function
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountOutMin:
+                  type: string
+                  example: "1000"
+                path:
+                  type: array
+                  items:
+                    type: string
+                  example: ["0x...", "0x..."]
+                to:
+                  type: string
+                  example: "0x..."
+                influencer:
+                  type: string
+                  example: "0x..."
+                influencerFeePercentage:
+                  type: string
+                  example: "10"
+                masterInfluencer:
+                  type: string
+                  example: "0x..."
+                masterInfluencerFeePercentage:
+                  type: string
+                  example: "10"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactionHash:
+                    type: string
+                    example: "0xTransactionHash"
+  /sellV2:
+    post:
+      summary: Execute sellV2 function
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountIn:
+                  type: string
+                  example: "1000"
+                amountOutMin:
+                  type: string
+                  example: "900"
+                path:
+                  type: array
+                  items:
+                    type: string
+                  example: ["0x...", "0x..."]
+                influencer:
+                  type: string
+                  example: "0x..."
+                influencerFeePercentage:
+                  type: string
+                  example: "10"
+                masterInfluencer:
+                  type: string
+                  example: "0x..."
+                masterInfluencerFeePercentage:
+                  type: string
+                  example: "10"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactionHash:
+                    type: string
+                    example: "0xTransactionHash"
+  /sellV3:
+    post:
+      summary: Execute sellV3 function
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountIn:
+                  type: string
+                  example: "1000"
+                amountOutMin:
+                  type: string
+                  example: "900"
+                tokenIn:
+                  type: string
+                  example: "0x..."
+                fee:
+                  type: string
+                  example: "3000"
+                influencer:
+                  type: string
+                  example: "0x..."
+                influencerFeePercentage:
+                  type: string
+                  example: "10"
+                masterInfluencer:
+                  type: string
+                  example: "0x..."
+                masterInfluencerFeePercentage:
+                  type: string
+                  example: "10"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactionHash:
+                    type: string
+                    example: "0xTransactionHash"
+  /setAdminAddress:
+    post:
+      summary: Set admin address
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _adminAddress:
+                  type: string
+                  example: "0x..."
+      responses:
+        '200':
+          description: Successful response
+  /setAdminFEE:
+    post:
+      summary: Set admin fee
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _adminFeeInETH:
+                  type: string
+                  example: "1000"
+      responses:
+        '200':
+          description: Successful response
+  /setInfluencerComparison:
+    post:
+      summary: Set influencer comparison
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _influencerComparison:
+                  type: string
+                  example: "0x..."
+      responses:
+        '200':
+          description: Successful response
+  /setMasterInfComparison:
+    post:
+      summary: Set master influencer comparison
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _masterinfComparison:
+                  type: string
+                  example: "0x..."
+      responses:
+        '200':
+          description: Successful response
+  /setSecondOwner:
+    post:
+      summary: Set second owner
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _secondOwner:
+                  type: string
+                  example: "0x..."
+      responses:
+        '200':
+          description: Successful response
+  /transferOwnership:
+    post:
+      summary: Transfer ownership
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newOwner:
+                  type: string
+                  example: "0x..."
+      responses:
+        '200':
+          description: Successful response
+  /withdrawBalanceByOwner:
+    post:
+      summary: Withdraw balance by owner
+      responses:
+        '200':
+          description: Successful response
+  /withdrawBalanceBysecondOwner:
+    post:
+      summary: Withdraw balance by second owner
+      responses:
+        '200':
+          description: Successful response
+  /withdrawInfluencerFee:
+    post:
+      summary: Withdraw influencer fee
+      responses:
+        '200':
+          description: Successful response
+  /withdrawInfluencerFeeByAdmin:
+    post:
+      summary: Withdraw influencer fee by admin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                __influencer:
+                  type: string
+                  example: "0x..."
+      responses:
+        '200':
+          description: Successful response
+  /withdrawTotalBalance:
+    post:
+      summary: Withdraw total balance
+      responses:
+        '200':
+          description: Successful response
