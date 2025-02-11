@@ -16,11 +16,11 @@ Côté front, les types et tailles sont vérifiées surtout pour faciliter l'exp
 
 # Liste des points d'entrées
 
-| UI | file path | formDataKey | allowedTypes | allowedSize | checks |
-|----|-----------|-------------|--------------|-------------|--------|
+| UI | file path | formDataKey | allowedTypes | allowedSize |
+|----|-----------|-------------|--------------|-------------|
 |Dossier / pics | pages/dossiers/id/index | dossierDashboardPicUpload | jpeg, png | 5 |
-|Admin / user / signature | comps/form/UserSignature | userSignatureUpload | jpeg, png | 5 |
-|Dossier / stock / saisie | comps/form/saisie | files[] (see useUpload) | many | 5 |
-|Dossier / audit / create (yousign) CCP - pics | comps/form/CCP | NA | jpeg, png | 5 |
-|Dossier / audit / create (yousign) RCG - pics | comps/form/RCG | NA | jpeg, png | 5 |
+|Admin / user / signature | components/form/UserSignature | userSignatureUpload | jpeg, png | 5 |
+|Dossier / stock / saisie | components/form/saisie | files[] (see useUpload) | many | 5 |
+|Dossier / audit / create (yousign) CCP - pics | components/form/CCP | NA | jpeg, png | 5 |
+|Dossier / audit / create (yousign) RCG - pics | components/form/RCG | NA | jpeg, png | 5 |
 |Dossier / audit / create (yousign) pdf attachements | pages/dossiers/id/audit/create/type | yousignUpload | pdf | 5 |
